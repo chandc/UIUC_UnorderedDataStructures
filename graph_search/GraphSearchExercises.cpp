@@ -148,6 +148,12 @@ void GridGraph::removePoint(const IntPair &p1)
   // for this, because that's what we're implementing right now! We need to
   // use adjacencyMap's own erase function directly to erase the key.)
 
+// erase the vertex itself
+adjacencyMap.erase(p1);
+//erase the reference of this vertex in all its neighbors
+ for ( auto it = originalNeighbors.begin(); it != originalNeighbors.end(); ++it )
+    adjacencyMap[*it].erase(p1);
+
   // =======================================================================
   // TODO: Your code here!
   // =======================================================================
